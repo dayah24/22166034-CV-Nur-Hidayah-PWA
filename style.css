@@ -1,0 +1,398 @@
+/* Resetting default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins";
+}
+
+/* CSS Variables */
+:root {
+    --bg-color: #080808;
+    --second-bg-color: #101010;
+    --text-color: white;
+    --main-color: #ea580c;
+}
+
+/* Global Styles */
+html {
+    font-size: 60%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 4rem 15%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+#menu-icon {
+    font-size: 3.5rem;
+    color: var(--main-color);
+    display: none;
+}
+
+.logo {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+span {
+    background: linear-gradient(270deg, #DF8908 10%, #ff1d15 100%);
+    background-clip: text;
+    color: transparent;
+}
+
+/* Navbar Styles */
+.navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 1.3s ease-in-out;
+    border-bottom: 3px solid transparent;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+}
+
+/* Button Styles */
+.gradient-btn {
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    background: linear-gradient(270deg, #DF8908 10%, #ff1d15 100%);
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    color: white;
+    border: none;
+    text-wrap: nowrap;
+    margin-bottom: 30px; /* Menambahkan margin bawah pada tombol Contact Me */
+}
+
+.gradient-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Section Styles */
+section {
+    min-height: 100vh;
+    padding: 10rem 15%;
+}
+
+/* Home Section */
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15rem;
+    margin: 5rem 0;
+}
+
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.home-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    line-height: 1;
+}
+
+.home-img {
+    flex-shrink: 0;
+}
+
+.home-content h3 {
+    margin: 1rem 0;
+    font-size: 4rem;
+}
+
+.home-content p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+.home-img img {
+    width: 15vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color);
+    transition: 0.45s ease-in-out;
+}
+
+.home-img img:hover {
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color),
+                0 0 100px var(--main-color);
+}
+
+/* Social Icons */
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    color: var(--main-color);
+    margin: 3rem 0.5rem;
+    transition: 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: var(--text-color);
+    background-color: var(--main-color);
+    transform: scale(1.2) translateY(-5px);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+/* Button Group */
+.btn-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 3rem;
+    font-size: 1.8rem;
+    color: black;
+    border: 2px solid transparent;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color);
+}
+
+.btn-group a:nth-of-type(2) {
+    border: 2px solid var(--main-color);
+    box-shadow: 0 25px transparent;
+}
+
+.btn-group a:nth-of-type(2):hover {
+    box-shadow: 0 0 25px var(--main-color);
+    background-color: var(--main-color);
+    color: black;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    background: var(--second-bg-color);
+}
+
+.about-content h2 {
+    font-size: 7rem;
+    text-align: left;
+}
+
+.about-content p {
+    font-size: 1.8rem;
+}
+
+.about-content .btn {
+    margin: 3rem 0;
+}
+
+/* Data Diri Section */
+#about-me > div {
+    margin-top: 20px; /* Jarak antar kotak */
+    padding: 20px; /* Jarak di dalam kotak */
+    border: 2px solid var(--main-color); /* Border sesuai tema */
+    border-radius: 10px; /* Sudut kotak yang membulat */
+    background-color: rgba(30, 30, 30, 0.8); /* Warna latar belakang */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Bayangan untuk efek 3D */
+}
+
+h3 {
+    font-size: 2rem; /* Ukuran font 2rem untuk judul setiap kotak */
+    color: white; /* Warna teks putih */
+}
+
+p, ul {
+    font-size: 2rem; /* Ukuran font 2rem untuk teks dalam kotak */
+    color: white; /* Warna teks putih */
+}
+
+/* Navigation Table */
+.back-to-about {
+    margin-top: 20px; /* Jarak di atas tabel */
+    text-align: center; /* Rata tengah untuk teks dalam tabel */
+}
+
+.navigation-table {
+    width: 100%;
+    margin: 20px 0; /* Tambahkan margin jika perlu */
+    border-collapse: collapse; /* Menghilangkan jarak antara border sel */
+}
+
+.navigation-table td {
+    text-align: center; /* Rata tengah */
+    padding: 15px; /* Spasi dalam sel */
+}
+
+.navigation-table a {
+    font-size: 1.8rem; /* Ukuran font untuk tautan */
+    color: var(--text-color); /* Menggunakan warna teks dari variabel CSS */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    transition: color 0.3s ease; /* Efek transisi untuk perubahan warna */
+}
+
+.navigation-table a:hover {
+    color: var(--main-color); /* Warna saat hover */
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg-color);
+}
+
+/* Heading Styles */
+.heading {
+    text-align: center;
+    font-size: 7rem;
+    margin: 5rem 0;
+}
+
+/* Contact Section */
+.contact {
+    margin-bottom: 3rem;
+    color: var(--text-color);
+}
+
+.contact form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin: 5rem 0;
+    text-align: center;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 2.5rem;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-radius: 2rem;
+    border: 2px solid var(--main-color);
+    margin: 1.5rem 0;
+    resize: none;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: var(--second-bg-color);
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--text-color);
+}
+
+.projects {
+    padding: 10rem 15%;
+    background: var(--second-bg-color);
+    color: var(--text-color);
+}
+
+.project-list {
+    display: grid;
+    gap: 3rem;
+}
+
+.project {
+    padding: 2rem;
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    background-color: rgba(30, 30, 30, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.project h3 {
+    font-size: 3rem;
+    color: var(--main-color);
+}
+
+.project p {
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+/* CSS untuk Tombol Install */
+#install-button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--main-color);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 1.rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 30px; /* Menambahkan margin-top untuk memberi jarak ke tombol Contact Me */
+}
+
+#install-button:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+#install-button:active {
+    transform: translateY(2px);
+}

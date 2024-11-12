@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="manifest" href="manifest.json"> <!-- PWA manifest -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <style>
+        /* CSS untuk hasil pesan */
+        .result-message {
+            margin-top: 20px;
+            font-size: 2rem;
+            color: white;
+            border: 2px solid var(--main-color);
+            border-radius: 10px;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar {
+            display: none;
+        }
+
+        .navbar.active {
+            display: block;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+        }
+
+        #about-me {
+            display: none;
+            margin-top: 20px;
+            color: white;
+            font-size: 3rem;
+            border: 2px solid var(--main-color);
+            border-radius: 10px;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="#home" class="logo">
+            Nur <span>Hidayah</span>
+        </a>
+
+        <i class="bx bx-menu menu-icon" id="menu-icon"></i>
+
+        <nav class="navbar" id="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a> <!-- Link ke bagian Projects -->
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="gradient-btn">Contact Me</button>
+        <button id="install-button" style="display: none;">Install App</button>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1 style="font-size: 3rem;">Hai <span>Selamat Datang</span></h1>
+            <h3>di <span>Portfolio Saya</span></h3>
+            <p>Saya Nur Hidayah, seorang mahasiswi yang memiliki semangat dalam pengembangan web dan desain grafis. Dengan keterampilan di JavaScript, Python, dan desain visual, saya selalu berusaha menciptakan solusi inovatif untuk berbagai kebutuhan digital. Mari jelajahi karya dan perjalanan saya!</p>
+    
+            <div class="social-icons">
+                <a href="https://github.com/dayah24">
+                    <i class="bx bxl-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/nur-hidayah-527145333/">
+                    <i class="bx bxl-linkedin-square"></i>
+                </a>
+                <a href="https://www.instagram.com/nurhidayah_243/">
+                    <i class="bx bxl-instagram-alt"></i>
+                </a>
+                <a href="https://x.com/Nrhidayah241">
+                    <i class="bx bxl-twitter"></i>
+                </a>
+            </div>
+    
+            <div class="btn-group">
+                <a href="#" class="btn" id="hire-button">Hire</a>
+            </div>            
+        </div> 
+        
+        <div class="home-img">
+            <img src="image/image.jpg" alt="Profile Image" style="width: 15vw; border-radius: 50%;">
+        </div>
+    </section>    
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>Tentang <span>Saya</span></h2>
+            <p>Saya Nur Hidayah, mahasiswa Sistem Informasi di STMIK YMI Tegal, dengan minat besar dalam pengembangan web dan desain grafis. Berpengalaman dalam JavaScript, Python, MySQL, serta alat desain seperti Canva dan Corel Draw. Saat ini, saya sedang mengerjakan proyek Progressive Web App (PWA) tentang portfolio, yang menggabungkan HTML, CSS, dan JavaScript.</p>
+            <a href="#" class="btn" id="read-more">Selengkapnya</a>
+        </div>
+    </section>
+
+    <section id="about-me">
+        <h2>My <span>Personal Data</span></h2>
+        
+        <div class="data-diri">
+            <h3>Data Diri</h3>
+            <p><strong>Nama Lengkap:</strong> Nur Hidayah</p>
+            <p><strong>Tanggal Lahir:</strong> 24 Januari 2024</p>
+            <p><strong>Alamat:</strong> Jl. Jatisari No. 50 Kel. Debong Tengah, Kota Tegal</p>
+            <p><strong>Telepon:</strong> 0812-2584-7685</p>
+            <p><strong>Email:</strong> diyah1458@gmail.com</p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/nurhidayah_243" target="_blank">nurhidayah_243</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/nurhidayah" target="_blank">nurhidayah</a></p>
+        </div>
+    
+        <div class="pendidikan">
+            <h3>Pendidikan</h3>
+            <ul>
+                <li><strong>Kampus:</strong> STMIK YMI Tegal<br>
+                    <strong>Program Studi:</strong> Sistem Informasi<br>
+                    <strong>Semester:</strong> 5
+                </li>
+                <li><strong>SMK N 2 Kota Tegal<br>
+                    Jurusan:</strong> Administrasi Perkantoran<br>
+                    <strong>Tahun Lulus:</strong> 2022
+                </li>
+            </ul>
+        </div>
+    
+        <div class="keterampilan">
+            <h3>Keterampilan</h3>
+            <ul>
+                <li>Bahasa Pemrograman: Javascript, Python</li>
+                <li>Desain: Canva, Corel Draw</li>
+                <li>Database: MySQL</li>
+                <li>Tools: Visual Studio Code</li>
+            </ul>
+        </div>
+    
+        <div class="back-to-about">
+            <a href="#about" class="btn" id="back-to-about">Kembali</a>
+        </div>
+    </section>
+    
+    <section class="projects" id="projects">
+        <h2 class="heading">My <span>Projects</span></h2>
+        
+        <div class="project-list">
+            <div class="project">
+                <h3>1. Desain Grafis</h3>
+                <p>Menghasilkan karya desain grafis menggunakan alat seperti Canva dan Corel Draw untuk berbagai kebutuhan, termasuk pembuatan poster, logo, dan konten media sosial.</p>
+            </div>
+    
+            <div class="project">
+                <h3>2. Surat Menyurat</h3>
+                <p>Membantu dalam pembuatan dan pengelolaan surat-menyurat resmi yang rapi dan sesuai standar, untuk kebutuhan administrasi dan dokumentasi.</p>
+            </div>
+    
+            <div class="project">
+                <h3>3. Laporan Keuangan</h3>
+                <p>Proyek yang mencakup pembuatan laporan keuangan menggunakan teknik dasar akuntansi untuk membantu perusahaan dalam pelacakan pemasukan dan pengeluaran.</p>
+            </div>
+    
+            <div class="project">
+                <h3>4. Pembuatan Berita</h3>
+                <p>Menyusun dan menyebarkan berita atau artikel untuk komunikasi publik, menggunakan pendekatan jurnalistik untuk menyampaikan informasi dengan jelas dan menarik.</p>
+            </div>
+        </div>
+    </section>    
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+    
+        <form id="contact-form" action="#">
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name" id="full-name" required>
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" id="email" required>
+                </div>
+            </div>
+    
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="number" placeholder="Phone Number" id="phone" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Subject" id="subject" required>
+                </div>
+            </div>
+    
+            <div class="input-group-2">
+                <textarea id="message" placeholder="Your Message" cols="30" rows="5" required></textarea>
+            </div>
+    
+            <div class="submit-btn">
+                <input type="submit" value="Send Message" class="btn">
+            </div>
+        </form>     
+    
+        <div class="result-message" id="result-message" style="display: none;"></div>
+    </section>    
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://github.com/dayah24">
+                <i class="bx bxl-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/nur-hidayah-527145333/">
+                <i class="bx bxl-linkedin-square"></i>
+            </a>
+            <a href="https://www.instagram.com/nurhidayah_243/">
+                <i class="bx bxl-instagram-alt"></i>
+            </a>
+            <a href="https://x.com/Nrhidayah241">
+                <i class="bx bxl-twitter"></i>
+            </a>
+        </div>
+        <p>© 2024 Nur Hidayah. All rights reserved.</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
+
