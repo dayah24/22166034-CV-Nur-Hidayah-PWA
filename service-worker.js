@@ -1,13 +1,13 @@
-const cacheName = 'portfolio-cache-v3';
+const cacheName = 'portofolio-cache-v4'; // Ganti versi cache ini jika ingin memaksa pembaruan
 const assets = [
-    "/",
-    "/index.html",
-    "/style.css",
-    "/app.js",
-    "/manifest.json",
-    "/image/image.jpg",
-    "/image/icon-192x192.png",
-    "/image/icon-512x512.png",
+    "/22166034-CV-Nur-Hidayah-PWA/",
+    "/22166034-CV-Nur-Hidayah-PWA/index.html",
+    "/22166034-CV-Nur-Hidayah-PWA/style.css",
+    "/22166034-CV-Nur-Hidayah-PWA/app.js",
+    "/22166034-CV-Nur-Hidayah-PWA/manifest.json",
+    "/22166034-CV-Nur-Hidayah-PWA/image.jpg",
+    "/22166034-CV-Nur-Hidayah-PWA/icon-192x192.png",
+    "/22166034-CV-Nur-Hidayah-PWA/icon-512x512.png",
 ];
 
 // Install event untuk cache semua assets
@@ -37,8 +37,8 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
             return cachedResponse || fetch(event.request).then((networkResponse) => {
+                // Pastikan respons jaringan valid sebelum menambahkannya ke cache
                 if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-                    console.log('Service Worker: Invalid network response', networkResponse);
                     return networkResponse;
                 }
 
@@ -48,13 +48,13 @@ self.addEventListener('fetch', (event) => {
                 });
             });
         }).catch(() => {
-            console.log('Service Worker: Fetch failed, returning offline page');
-            return caches.match('/index.html');
+            // Menampilkan halaman offline jika fetch gagal dan cache tidak ada
+            return caches.match('/portfolio-hidayah/index.html');
         })
     );
 });
 
-// Activate event untuk membersihkan cache lama dan menampilkan notifikasi saat aktivasi
+// Activate event untuk membersihkan cache lama
 self.addEventListener('activate', (event) => {
     console.log('Service Worker: Activating...');
 
@@ -65,7 +65,6 @@ self.addEventListener('activate', (event) => {
             );
         }).then(() => {
             self.clients.claim();
-            showNotification(); // Tampilkan notifikasi saat Service Worker diaktifkan
         })
     );
 });
@@ -92,7 +91,7 @@ function showNotification() {
     const title = 'Hallo';
     const options = {
         body: 'Selamat Datang di Web Portofolio Nur Hidayah. Terimakasih telah mengunjungi',
-        icon: '/image/icon-192x192.png'
+        icon: '/22166034-CV-Nur-Hidayah-PWA/icon-192x192.png'
     };
 
     // Pastikan registration tersedia sebelum menampilkan notifikasi
@@ -114,6 +113,6 @@ self.addEventListener('message', (event) => {
 self.addEventListener('notificationclick', event => {
     event.notification.close(); // Menutup notifikasi saat diklik
     event.waitUntil(
-        clients.openWindow('https://github.com/dayah24/Portofolio-PWA/')
+        clients.openWindow('https://dayah24.github.io/22166034-CV-Nur-Hidayah-PWA/')
     );
 });
