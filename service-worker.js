@@ -91,7 +91,7 @@ function showNotification() {
     const title = 'Hallo';
     const options = {
         body: 'Selamat Datang di Web Portofolio Nur Hidayah. Terimakasih telah mengunjungi',
-        icon: '/https://cv-nur-hidayah-pwa.vercel.app/icon-192x192.png'
+        icon: '/icon-192x192.png'
     };
 
     // Pastikan registration tersedia sebelum menampilkan notifikasi
