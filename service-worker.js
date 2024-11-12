@@ -1,13 +1,13 @@
 const cacheName = 'portofolio-cache-v4'; // Ganti versi cache ini jika ingin memaksa pembaruan
 const assets = [
-    "/22166034-CV-Nur-Hidayah-PWA/",
-    "/22166034-CV-Nur-Hidayah-PWA/index.html",
-    "/22166034-CV-Nur-Hidayah-PWA/style.css",
-    "/22166034-CV-Nur-Hidayah-PWA/app.js",
-    "/22166034-CV-Nur-Hidayah-PWA/manifest.json",
-    "/22166034-CV-Nur-Hidayah-PWA/image.jpg",
-    "/22166034-CV-Nur-Hidayah-PWA/icon-192x192.png",
-    "/22166034-CV-Nur-Hidayah-PWA/icon-512x512.png",
+    "/https://cv-nur-hidayah-pwa.vercel.app/",
+    "/https://cv-nur-hidayah-pwa.vercel.app/index.html",
+    "/https://cv-nur-hidayah-pwa.vercel.app/style.css",
+    "/https://cv-nur-hidayah-pwa.vercel.app/app.js",
+    "/https://cv-nur-hidayah-pwa.vercel.app/manifest.json",
+    "/https://cv-nur-hidayah-pwa.vercel.app/image.jpg",
+    "/https://cv-nur-hidayah-pwa.vercel.app/icon-192x192.png",
+    "/https://cv-nur-hidayah-pwa.vercel.app/icon-512x512.png",
 ];
 
 // Install event untuk cache semua assets
@@ -91,7 +91,7 @@ function showNotification() {
     const title = 'Hallo';
     const options = {
         body: 'Selamat Datang di Web Portofolio Nur Hidayah. Terimakasih telah mengunjungi',
-        icon: '/22166034-CV-Nur-Hidayah-PWA/icon-192x192.png'
+        icon: '/https://cv-nur-hidayah-pwa.vercel.app/icon-192x192.png'
     };
 
     // Pastikan registration tersedia sebelum menampilkan notifikasi
