@@ -60,10 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function displayContacts() {
+    try {
         const db = await initDB();
         const transaction = db.transaction([storeName], 'readonly');
         const store = transaction.objectStore(storeName);
         const contacts = await store.getAll();
+
+        console.log("Contacts fetched from IndexedDB:", contacts); // Log data fetched from DB
 
         const contactList = document.getElementById('contact-list');
         if (contactList) {
@@ -80,8 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 contactList.appendChild(contactItem);
             });
+        } else {
+            console.error("Element with ID 'contact-list' not found.");
         }
+    } catch (error) {
+        console.error("Error displaying contacts:", error);
     }
+}
 
     if (contactForm) {
         contactForm.addEventListener('submit', async (event) => {
