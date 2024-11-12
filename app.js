@@ -111,36 +111,38 @@ document.addEventListener('DOMContentLoaded', () => {
     let deferredPrompt;
 
     // Deteksi event "beforeinstallprompt"
-window.addEventListener("beforeinstallprompt", (e) => {
-    // Prevent default prompt
-    e.preventDefault();
-    deferredPrompt = e;
-    // Tampilkan tombol "Install App"
-    installButton.style.display = "block";
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installButton.style.display = "block";
 
-    installButton.addEventListener("click", () => {
-        installButton.style.display = "none"; // Sembunyikan tombol setelah diklik
-        deferredPrompt.prompt(); // Tampilkan prompt install
+        installButton.addEventListener("click", () => {
+            deferredPrompt.prompt();
 
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === "accepted") {
-                console.log("User accepted the A2HS prompt");
-            } else {
-                console.log("User dismissed the A2HS prompt");
-            }
-            deferredPrompt = null;
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === "accepted") {
+                    console.log("User accepted the A2HS prompt");
+                    localStorage.setItem("isInstalled", true);
+                } else {
+                    console.log("User dismissed the A2HS prompt");
+                }
+                deferredPrompt = null;
+            });
         });
     });
-});
 
-    navigator.serviceWorker.addEventListener('message', (event) => {
-        if (event.data && event.data.action === 'showInstallButton') {
-            installButton.style.display = 'block';
-        }
-    });
-    
+    // Cek status instalasi dari localStorage
+    const isInstalled = localStorage.getItem("isInstalled");
+    if (isInstalled === "true") {
+        installButton.style.display = "block";
+        installButton.addEventListener("click", () => {
+            alert("Aplikasi sudah terpasang di perangkat Anda.");
+        });
+    }
+
     window.addEventListener('appinstalled', () => {
-        if (installButton) installButton.style.display = 'none';
+        localStorage.setItem("isInstalled", true);
+        installButton.style.display = "none";
     });
 
     // Service Worker Registration
