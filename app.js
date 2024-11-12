@@ -118,26 +118,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // Install App Event
     let deferredPrompt;
 
-    // Deteksi event "beforeinstallprompt"
-    window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        installButton.style.display = "block";
+    // Menampilkan tombol "Install App" saat event beforeinstallprompt terpicu
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); // Mencegah prompt otomatis
+    deferredPrompt = e; // Simpan event untuk digunakan nanti
+    installButton.style.display = 'block'; // Tampilkan tombol install
 
-        installButton.addEventListener("click", () => {
-            deferredPrompt.prompt();
-
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === "accepted") {
-                    console.log("User accepted the A2HS prompt");
-                    localStorage.setItem("isInstalled", true);
-                } else {
-                    console.log("User dismissed the A2HS prompt");
-                }
-                deferredPrompt = null;
-            });
+    installButton.addEventListener('click', () => {
+        deferredPrompt.prompt(); // Tampilkan prompt install
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+                installButton.style.display = 'none'; // Sembunyikan tombol setelah instalasi
+            } else {
+                console.log('User dismissed the install prompt');
+            }
+            deferredPrompt = null; // Hapus event setelah digunakan
         });
     });
+});
+
+// Menyembunyikan tombol install jika aplikasi telah terpasang
+window.addEventListener('appinstalled', () => {
+    console.log('Aplikasi berhasil diinstal');
+    installButton.style.display = 'none'; // Sembunyikan tombol install setelah pemasangan berhasil
+});
 
     // Cek status instalasi dari localStorage dan tetap tampilkan tombol
     const isInstalled = localStorage.getItem("isInstalled");
