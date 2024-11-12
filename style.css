@@ -1,3 +1,4 @@
+
 /* Resetting default styles */
 * {
     margin: 0;
@@ -372,20 +373,20 @@ p, ul {
 
 /* CSS untuk Tombol Install */
 #install-button {
-    display: none;
+    display: none; /* Akan diatur ke 'block' oleh JavaScript saat event 'beforeinstallprompt' */
     position: fixed;
     bottom: 20px;
     right: 20px;
     background-color: var(--main-color);
     color: white;
-    padding: 15px 25px;
+    padding: 10px 20px;
     border-radius: 50px;
-    font-size: 1.rem;
+    font-size: 1rem; /* Perbaikan ukuran font */
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-    margin-top: 30px; /* Menambahkan margin-top untuk memberi jarak ke tombol Contact Me */
+    margin-top: 20px; /* Memberi jarak dari elemen lain */
 }
 
 #install-button:hover {
