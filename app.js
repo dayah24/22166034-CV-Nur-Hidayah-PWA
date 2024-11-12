@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Service Worker Registration
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/22166034-CV-Nur-Hidayah-PWA/service-worker.js')
+        navigator.serviceWorker.register('/https://cv-nur-hidayah-pwa.vercel.app/service-worker.js')
             .then((registration) => {
                 console.log('Service Worker registered with scope:', registration.scope);
             })
