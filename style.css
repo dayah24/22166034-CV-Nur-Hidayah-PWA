@@ -397,3 +397,227 @@ p, ul {
 #install-button:active {
     transform: translateY(2px);
 }
+/* Menambahkan media query untuk layar di bawah 768px */
+@media (max-width: 768px) {
+    /* Header */
+    .header {
+        padding: 2rem 5%;
+    }
+
+    #menu-icon {
+        display: block; /* Menampilkan ikon menu di perangkat mobile */
+    }
+
+    .navbar {
+        display: none; /* Menyembunyikan navbar untuk mobile */
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    /* Navbar Links */
+    .navbar a {
+        font-size: 1.6rem;
+        margin-left: 2rem;
+    }
+
+    /* Home Section */
+    .home {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .home-content h1,
+    .home-content h3 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .home-content p {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .home-img img {
+        width: 40vw;
+    }
+
+    /* Social Icons */
+    .social-icons a {
+        font-size: 2.5rem;
+        margin: 2rem 0.5rem;
+    }
+
+    /* Button Group */
+    .btn-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        font-size: 1.6rem;
+        padding: 0.8rem 2rem;
+    }
+
+    /* About Section */
+    .about {
+        flex-direction: column;
+        padding: 5rem 5%;
+        gap: 5rem;
+    }
+
+    .about-content h2 {
+        font-size: 4rem;
+    }
+
+    .about-content p {
+        font-size: 1.6rem;
+    }
+
+    /* Data Diri Section */
+    #about-me > div {
+        font-size: 1.6rem;
+        padding: 10px;
+    }
+
+    h3,
+    p,
+    ul {
+        font-size: 1.6rem;
+    }
+
+    /* Navigation Table */
+    .navigation-table td {
+        padding: 10px;
+    }
+
+    /* Projects Section */
+    .projects {
+        padding: 5rem 5%;
+    }
+
+    .project h3 {
+        font-size: 2.5rem;
+    }
+
+    .project p {
+        font-size: 1.6rem;
+    }
+
+    /* Contact Section */
+    .contact form {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .contact form .input-box input,
+    .contact form textarea {
+        font-size: 1.6rem;
+        padding: 2rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 1rem 0;
+    }
+
+    /* Tombol Install */
+    #install-button {
+        font-size: 1.5rem;
+        padding: 10px 15px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Menambahkan media query untuk layar di bawah 480px */
+@media (max-width: 480px) {
+    /* Header */
+    .header {
+        padding: 1rem 5%;
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 2rem;
+    }
+
+    /* Navbar Links */
+    .navbar a {
+        font-size: 1.4rem;
+        margin-left: 1rem;
+    }
+
+    /* Home Section */
+    .home-content h1,
+    .home-content h3 {
+        font-size: 2.5rem;
+    }
+
+    .home-content p {
+        font-size: 1.2rem;
+    }
+
+    .home-img img {
+        width: 50vw;
+    }
+
+    /* Social Icons */
+    .social-icons a {
+        font-size: 2rem;
+        padding: 0.8rem;
+    }
+
+    /* Button Group */
+    .btn {
+        font-size: 1.4rem;
+        padding: 0.6rem 1.5rem;
+    }
+
+    /* About Section */
+    .about-content h2 {
+        font-size: 3rem;
+    }
+
+    .about-content p {
+        font-size: 1.4rem;
+    }
+
+    /* Data Diri Section */
+    h3,
+    p,
+    ul {
+        font-size: 1.4rem;
+    }
+
+    /* Navigation Table */
+    .navigation-table a {
+        font-size: 1.4rem;
+    }
+
+    /* Projects Section */
+    .project h3 {
+        font-size: 2rem;
+    }
+
+    .project p {
+        font-size: 1.4rem;
+    }
+
+    /* Contact Section */
+    .contact form .input-box input,
+    .contact form textarea {
+        font-size: 1.4rem;
+        padding: 1.5rem;
+    }
+
+    /* Tombol Install */
+    #install-button {
+        font-size: 1.2rem;
+        padding: 8px 12px;
+    }
+}
+
