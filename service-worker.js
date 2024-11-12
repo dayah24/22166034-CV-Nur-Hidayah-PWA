@@ -1,13 +1,13 @@
 const cacheName = 'portofolio-cache-v4'; // Ganti versi cache ini jika ingin memaksa pembaruan
 const assets = [
-    "/cv-nur-hidayah-pwa.vercel.app/",
-    "/cv-nur-hidayah-pwa.vercel.app/index.html",
-    "/cv-nur-hidayah-pwa.vercel.app/style.css",
-    "/cv-nur-hidayah-pwa.vercel.app/app.js",
-    "/cv-nur-hidayah-pwa.vercel.app/manifest.json",
-    "/cv-nur-hidayah-pwa.vercel.app/image.jpg",
-    "/cv-nur-hidayah-pwa.vercel.app/icon-192x192.png",
-    "/cv-nur-hidayah-pwa.vercel.app/icon-512x512.png",
+    "/",
+    "/index.html",
+    "/style.css",
+    "/app.js",
+    "/manifest.json",
+    "/image.jpg",
+    "/icon-192x192.png",
+    "/icon-512x512.png",
 ];
 
 // Install event untuk cache semua assets
