@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Cek status instalasi dari localStorage
+    // Cek status instalasi dari localStorage dan tetap tampilkan tombol
     const isInstalled = localStorage.getItem("isInstalled");
     if (isInstalled === "true") {
         installButton.style.display = "block";
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('appinstalled', () => {
         localStorage.setItem("isInstalled", true);
-        installButton.style.display = "none";
+        installButton.style.display = "block";  // Tetap tampilkan tombol
     });
 
     // Service Worker Registration
