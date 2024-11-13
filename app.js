@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Elemen-elemen utama
+    // Deklarasi elemen-elemen utama
     const menuIcon = document.getElementById('menu-icon');
     const navbar = document.getElementById('navbar');
     const readMoreButton = document.getElementById('read-more');
@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactList = document.getElementById('contact-list');
 
     // Navbar toggle
-    if (menuIcon) {
+    if (menuIcon && navbar) {
         menuIcon.addEventListener('click', () => {
             navbar.classList.toggle('active');
         });
     }
 
     // Tampilkan "About Me" section
-    if (readMoreButton) {
+    if (readMoreButton && aboutSection && aboutMeSection) {
         readMoreButton.addEventListener('click', (e) => {
             e.preventDefault();
             aboutSection.style.display = 'none';
@@ -28,34 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Kembali ke section "About"
-    if (backToAboutButton) {
+    if (backToAboutButton && aboutSection && aboutMeSection) {
         backToAboutButton.addEventListener('click', (e) => {
             e.preventDefault();
             aboutMeSection.style.display = 'none';
             aboutSection.style.display = 'block';
             aboutSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-
-    // Memeriksa apakah elemen dengan ID 'contact-list' ada
-    if (!contactList) {
-        console.error("Element with ID 'contact-list' not found.");
-    } else {
-        console.log("Element with ID 'contact-list' ditemukan.");
-
-        // Tambahkan data kontak contoh jika perlu
-        var sampleContacts = [
-            { name: "John Doe", email: "johndoe@example.com", phone: "123-456-7890" },
-            { name: "Jane Smith", email: "janesmith@example.com", phone: "098-765-4321" }
-        ];
-
-        sampleContacts.forEach(function(contact) {
-            var contactItem = document.createElement("div");
-            contactItem.classList.add("contact-item");
-            contactItem.innerHTML = `<strong>Nama:</strong> ${contact.name}<br>
-                                     <strong>Email:</strong> ${contact.email}<br>
-                                     <strong>Telepon:</strong> ${contact.phone}`;
-            contactList.appendChild(contactItem);
         });
     }
 
@@ -141,35 +119,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Install App Event
     let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        installButton.style.display = 'block';
+    if (installButton) {
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installButton.style.display = 'block';
 
-        installButton.addEventListener('click', () => {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                    installButton.style.display = 'none';
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-                deferredPrompt = null;
+            installButton.addEventListener('click', () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                        installButton.style.display = 'none';
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
             });
         });
-    });
-
-    // Hide install button if app is installed
-    window.addEventListener('appinstalled', () => {
-        console.log('Aplikasi berhasil diinstal');
-        installButton.style.display = 'none';
-        localStorage.setItem("isInstalled", true);
-    });
-
-    const isInstalled = localStorage.getItem("isInstalled");
-    if (isInstalled === "true") {
-        installButton.style.display = "none";
     }
 
     // Service Worker Registration
