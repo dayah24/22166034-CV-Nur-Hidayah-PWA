@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Elemen-elemen utama
     const menuIcon = document.getElementById('menu-icon');
     const navbar = document.getElementById('navbar');
     const readMoreButton = document.getElementById('read-more');
@@ -7,13 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToAboutButton = document.getElementById('back-to-about');
     const contactForm = document.getElementById('contact-form');
     const installButton = document.getElementById('install-button');
+    const contactList = document.getElementById('contact-list');
 
     // Navbar toggle
-    menuIcon.addEventListener('click', () => {
-        navbar.classList.toggle('active');
-    });
+    if (menuIcon) {
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    }
 
-    // Show "About Me" section
+    // Tampilkan "About Me" section
     if (readMoreButton) {
         readMoreButton.addEventListener('click', (e) => {
             e.preventDefault();
@@ -23,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Back to main "About" section
+    // Kembali ke section "About"
     if (backToAboutButton) {
         backToAboutButton.addEventListener('click', (e) => {
             e.preventDefault();
@@ -33,7 +37,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize IndexedDB for storing contacts
+    // Memeriksa apakah elemen dengan ID 'contact-list' ada
+    if (!contactList) {
+        console.error("Element with ID 'contact-list' not found.");
+    } else {
+        console.log("Element with ID 'contact-list' ditemukan.");
+
+        // Tambahkan data kontak contoh jika perlu
+        var sampleContacts = [
+            { name: "John Doe", email: "johndoe@example.com", phone: "123-456-7890" },
+            { name: "Jane Smith", email: "janesmith@example.com", phone: "098-765-4321" }
+        ];
+
+        sampleContacts.forEach(function(contact) {
+            var contactItem = document.createElement("div");
+            contactItem.classList.add("contact-item");
+            contactItem.innerHTML = `<strong>Nama:</strong> ${contact.name}<br>
+                                     <strong>Email:</strong> ${contact.email}<br>
+                                     <strong>Telepon:</strong> ${contact.phone}`;
+            contactList.appendChild(contactItem);
+        });
+    }
+
+    // Inisialisasi IndexedDB
     const dbName = 'contactDB';
     const storeName = 'contacts';
 
@@ -60,22 +86,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function displayContacts() {
-         const contactList = document.getElementById('contact-list');
-    if (!contactList) {
-        console.error("Element with ID 'contact-list' not found.");
-        return;
-    }
-        
-    try {
-        const db = await initDB();
-        const transaction = db.transaction([storeName], 'readonly');
-        const store = transaction.objectStore(storeName);
-        const contacts = await store.getAll();
+        if (!contactList) {
+            console.error("Element with ID 'contact-list' not found.");
+            return;
+        }
 
-        console.log("Contacts fetched from IndexedDB:", contacts); // Log data fetched from DB
+        try {
+            const db = await initDB();
+            const transaction = db.transaction([storeName], 'readonly');
+            const store = transaction.objectStore(storeName);
+            const contacts = await store.getAll();
 
-        const contactList = document.getElementById('contact-list');
-        if (contactList) {
             contactList.innerHTML = '';
             contacts.forEach(contact => {
                 const contactItem = document.createElement('div');
@@ -89,13 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 contactList.appendChild(contactItem);
             });
-        } else {
-            console.error("Element with ID 'contact-list' not found.");
+        } catch (error) {
+            console.error("Error displaying contacts:", error);
         }
-    } catch (error) {
-        console.error("Error displaying contacts:", error);
     }
-}
 
     if (contactForm) {
         contactForm.addEventListener('submit', async (event) => {
@@ -123,46 +141,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Install App Event
     let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installButton.style.display = 'block';
 
-    // Menampilkan tombol "Install App" saat event beforeinstallprompt terpicu
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault(); // Mencegah prompt otomatis
-    deferredPrompt = e; // Simpan event untuk digunakan nanti
-    installButton.style.display = 'block'; // Tampilkan tombol install
-
-    installButton.addEventListener('click', () => {
-        deferredPrompt.prompt(); // Tampilkan prompt install
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-                installButton.style.display = 'none'; // Sembunyikan tombol setelah instalasi
-            } else {
-                console.log('User dismissed the install prompt');
-            }
-            deferredPrompt = null; // Hapus event setelah digunakan
+        installButton.addEventListener('click', () => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                    installButton.style.display = 'none';
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                deferredPrompt = null;
+            });
         });
     });
-});
 
-// Menyembunyikan tombol install jika aplikasi telah terpasang
-window.addEventListener('appinstalled', () => {
-    console.log('Aplikasi berhasil diinstal');
-    installButton.style.display = 'none'; // Sembunyikan tombol install setelah pemasangan berhasil
-});
+    // Hide install button if app is installed
+    window.addEventListener('appinstalled', () => {
+        console.log('Aplikasi berhasil diinstal');
+        installButton.style.display = 'none';
+        localStorage.setItem("isInstalled", true);
+    });
 
-    // Cek status instalasi dari localStorage dan tetap tampilkan tombol
     const isInstalled = localStorage.getItem("isInstalled");
     if (isInstalled === "true") {
-        installButton.style.display = "block";
-        installButton.addEventListener("click", () => {
-            alert("Aplikasi sudah terpasang di perangkat Anda.");
-        });
+        installButton.style.display = "none";
     }
-
-    window.addEventListener('appinstalled', () => {
-        localStorage.setItem("isInstalled", true);
-        installButton.style.display = "block";  // Tetap tampilkan tombol
-    });
 
     // Service Worker Registration
     if ('serviceWorker' in navigator) {
