@@ -60,6 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function displayContacts() {
+         const contactList = document.getElementById('contact-list');
+    if (!contactList) {
+        console.error("Element with ID 'contact-list' not found.");
+        return;
+    }
+        
     try {
         const db = await initDB();
         const transaction = db.transaction([storeName], 'readonly');
